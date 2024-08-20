@@ -15,6 +15,8 @@ public static class DependencyInjection
 
         services.AddValidatorsFromAssembly(assembly);
 
+        services.AddAutoMapper(AppDomain.CurrentDomain.Load("Hydros.App"));
+
         return services;
     }
 }
