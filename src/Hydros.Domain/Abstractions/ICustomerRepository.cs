@@ -5,4 +5,5 @@ namespace Hydros.Domain.Abstractions;
 public interface ICustomerRepository
 {
     void Create(Customer  customer);
+    Task<Customer> GetByIdAsync(Guid id);
 }
