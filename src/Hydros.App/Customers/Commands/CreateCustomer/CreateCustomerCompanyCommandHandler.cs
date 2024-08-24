@@ -5,14 +5,22 @@ using MediatR;
 
 namespace Hydros.App.Customers.Commands.CreateCustomer;
 
-public sealed class CreateCustomerCompanyCommandHandler(ICustomerRepository customerRepository, IUnitOfWork unitOfWork)
+internal sealed class CreateCustomerCompanyCommandHandler(ICustomerRepository customerRepository, IUnitOfWork unitOfWork)
     : IRequestHandler<CreateCustomerCompanyCommand, Guid>
 {
     public async Task<Guid> Handle(CreateCustomerCompanyCommand request, CancellationToken cancellationToken)
     {
-        var customer = new Customer(Guid.NewGuid(), request.Name, request.Email, request.Address
-            , CustomerType.Company, string.Empty, string.Empty, request.TaxPayerId
-            , request.PhoneNumber, request.IsOwn);
+        var customer = new Customer(
+            Guid.NewGuid()
+            , request.Name
+            , request.Email
+            , CustomerType.Company
+            , string.Empty
+            , string.Empty
+            , request.TaxPayerId
+            , request.PhoneNumber
+            , request.PhoneNumberBackup
+            , request.IsOwn);
 
         customerRepository.Create(customer);
         await unitOfWork.SaveChangesAsync(cancellationToken);

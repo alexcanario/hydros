@@ -1,8 +1,8 @@
 ﻿namespace Hydros.Domain.Entities;
 
-public abstract class Entity(Guid id)
+public abstract class Entity
 {
-    public Guid Id { get; private set; } = id;
-    public DateTime CreatedOn { get; set; }
-    public DateTime UpdatedOn { get; set; }
+    public Guid Id { get; protected set; }
+    public DateTime CreatedOnUtc { get; set; } = DateTime.UtcNow;
+    public DateTime UpdatedOnUtc { get; set; } = DateTime.UtcNow;
 }

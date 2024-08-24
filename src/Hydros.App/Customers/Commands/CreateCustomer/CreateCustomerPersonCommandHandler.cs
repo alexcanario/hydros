@@ -10,8 +10,17 @@ public sealed class CreateCustomerPersonCommandHandler(ICustomerRepository custo
 {
     public async Task<Guid> Handle(CreateCustomerPersonCommand request, CancellationToken cancellationToken)
     {
-        var customer = new Customer(Guid.NewGuid(), request.Name, request.Email, request.Address, CustomerType.Person
-            , request.Identification, request.Nim, string.Empty, request.PhoneNumber, request.IsOwn);
+        var customer = new Customer(
+            Guid.NewGuid()
+            , request.Name
+            , request.Email
+            , CustomerType.Person
+            , request.Identification
+            , request.Nim
+            , string.Empty
+            , request.PhoneNumber
+            , request.PhoneNumberBackup
+            , request.IsOwn);
 
         customerRepository.Create(customer);
         await unitOfWork.SaveChangesAsync(cancellationToken);

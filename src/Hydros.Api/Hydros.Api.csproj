@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hydros.App\Hydros.App.csproj" />
-    <ProjectReference Include="..\Hydros.Infra\Hydros.Infra.csproj" />
+    <ProjectReference Include="..\Hydros.Infra\Hydros.Infra.Data.csproj" />
     <ProjectReference Include="..\Hydros.Presentation\Hydros.Presentation.csproj" />
   </ItemGroup>
 
